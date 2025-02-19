@@ -8,40 +8,34 @@
 
 <h4>Cliente</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Nombre"  class="control-label"></label>
-                <input asp-for="Nombre" value="@ViewBag.Mensaje2" class="form-control" />
-                <span asp-validation-for="Nombre" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Apellido" class="control-label"></label>
-                <input asp-for="Apellido" class="form-control" />
-                <span asp-validation-for="Apellido" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FechaNacimiento" class="control-label"></label>
-                <input type="date" asp-for="FechaNacimiento" class="form-control" />
-                <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label class="control-label"></label>
-                <input type="text" name="xvariable" class="form-control" />               
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<form asp-action="Create">
+    <div class="row">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input asp-for="Id" type="hidden" class="form-control" />
+        <div class="form-group col-6">
+            <label asp-for="Nombre" class="control-label"></label>
+            <input asp-for="Nombre" value="@ViewBag.Mensaje2" class="form-control" />
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+        <div class="form-group col-6">
+            <label asp-for="Apellido" class="control-label"></label>
+            <input asp-for="Apellido" class="form-control" />
+            <span asp-validation-for="Apellido" class="text-danger"></span>
+        </div>
+        <div class="form-group col-4">
+            <label asp-for="FechaNacimiento" class="control-label"></label>
+            <input type="date" asp-for="FechaNacimiento" class="form-control" />
+            <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+        </div>
     </div>
-</div>
+    <div class="form-group">
+        <label class="control-label"></label>
+        <input type="text" name="xvariable" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
 <div>
     <label>@ViewBag.Mensaje</label>
     <label>@ViewData["Edad"]</label>
@@ -50,5 +44,7 @@
     <a asp-action="Index">Back to List</a>
 </div>
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
